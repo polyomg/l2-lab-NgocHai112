@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Bài 4</title></head>
+<body>
+<h3>Trạng thái List</h3>
+<table border="1" width="100%">
+    <thead>
+    <tr>
+        <th rowspan="2">HỌ VÀ TÊN</th>
+        <th colspan="6">TRẠNG THÁI</th>
+    </tr>
+    <tr>
+        <th>Index</th>
+        <th>Count</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Odd</th>
+        <th>Even</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="staff, st : ${list}"
+        th:style="@{|background:${st.odd?'#fdd':'#ddf'}|}">
+        <td th:text="${#strings.capitalizeWords(staff.fullname)}"></td>
+        <td th:text="${st.index}"></td>
+        <td th:text="${st.count}"></td>
+        <td th:text="${st.first}"></td>
+        <td th:text="${st.last}"></td>
+        <td th:text="${st.odd}"></td>
+        <td th:text="${st.even}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
