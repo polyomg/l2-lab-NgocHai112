@@ -1,0 +1,31 @@
+<html th:replace="~{/layout/base::layout(~{::title}, ~{::section})}">
+<head><title>Đăng ký tài khoản</title></head>
+<body>
+<section class="col-md-6 mx-auto">
+  <div class="card p-4 shadow">
+    <h4 class="text-center text-success mb-3">Đăng ký tài khoản mới</h4>
+    <form action="/account/register" method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label">Tên đăng nhập</label>
+        <input type="text" class="form-control" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mật khẩu</label>
+        <input type="password" class="form-control" name="password" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Ảnh đại diện</label>
+        <input type="file" class="form-control" name="photo_file" accept="image/*">
+      </div>
+      <button class="btn btn-success w-100">Đăng ký</button>
+    </form>
+
+    <div class="alert alert-info mt-3" th:utext="${message}"></div>
+    <div class="text-center mt-3" th:if="${message}">
+      <img th:src="@{|/photos/${#strings.substringAfter(message, ': ')}}"
+           class="img-thumbnail mt-2" style="max-width:150px" alt="Ảnh upload">
+    </div>
+  </div>
+</section>
+</body>
+</html>

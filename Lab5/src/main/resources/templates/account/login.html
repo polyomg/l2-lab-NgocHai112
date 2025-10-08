@@ -1,0 +1,26 @@
+<html th:replace="~{/layout/base::layout(~{::title}, ~{::section})}">
+<head><title>Đăng nhập</title></head>
+<body>
+<section class="col-md-6 mx-auto">
+    <div class="card p-4 shadow">
+        <h4 class="text-center text-primary mb-3">Đăng nhập</h4>
+        <form action="/account/login" method="post">
+            <div class="mb-3">
+                <label class="form-label">Tên đăng nhập</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="remember" value="true" id="remember">
+                <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
+            </div>
+            <button class="btn btn-primary w-100">Đăng nhập</button>
+        </form>
+        <div class="alert alert-info mt-3" th:text="${message}"></div>
+    </div>
+</section>
+</body>
+</html>
