@@ -40,7 +40,6 @@ public class RegisterController {
             model.addAttribute("message",
                     "Không có file upload hoặc lỗi khi lưu file!");
         }
-
         return "/account/register";
     }
 }

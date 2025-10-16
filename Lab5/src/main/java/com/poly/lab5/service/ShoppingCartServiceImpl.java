@@ -1,9 +1,10 @@
 package com.poly.lab5.service;
 
+import com.poly.lab5.utils.DB;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 import com.poly.lab5.model.Item;
-
+import com.poly.lab5.utils.DB;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +18,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public Item add(Integer id) {
         Item item = map.get(id);
         if (item == null) {
-            item = new Item(id, "Item " + id, id * 10, 1);
-            map.put(id, item);
+            // ✅ Lấy sản phẩm thật từ DB
+            Item dbItem = DB.items.get(id);
+            if (dbItem != null) {
+                // tạo bản sao để không ảnh hưởng đến DB gốc
+                item = new Item(dbItem.getId(), dbItem.getName(), dbItem.getPrice(), 1);
+                map.put(id, item);
+            }
         } else {
             item.setQty(item.getQty() + 1);
         }
