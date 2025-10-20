@@ -1,4 +1,4 @@
-package com.poly.lab7;
+package web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
